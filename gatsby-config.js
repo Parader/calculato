@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Albion Fame Calculato',
   },
+  pathPrefix: '/calculato',
   plugins: [
     'gatsby-plugin-react-helmet',
     {
