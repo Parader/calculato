@@ -1,7 +1,6 @@
 import React from 'react'
 
 import StatButton from './StatButton'
-import M from 'materialize-css/dist/js/materialize.min.js'
 
 class StatForm extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class StatForm extends React.Component {
   }
 
   componentDidMount() {
-    M.AutoInit()
+    // M.AutoInit()
   }
 
   delete(id, deleteStatus) {
@@ -53,21 +52,12 @@ class StatForm extends React.Component {
     if (fame && tier && enchant) {
       this.props.addAction(action)
       e.target.fame.value = ''
+      e.target.tier.value = 0
+      e.target.enchant.value = 0
       this.setState({
         tier: 0,
         enchant: 0,
       })
-      this.tierContainer.current
-        .querySelector('.selected')
-        .classList.remove('selected')
-      this.tierContainer.current.querySelector('.select-dropdown').value =
-        'None'
-
-      this.enchantContainer.current
-        .querySelector('.selected')
-        .classList.remove('selected')
-      this.enchantContainer.current.querySelector('.select-dropdown').value =
-        'None'
     }
   }
   render() {
@@ -100,6 +90,7 @@ class StatForm extends React.Component {
               <select
                 name="tier"
                 placeholder="none"
+                className="browser-default"
                 value={this.state.tier}
                 onChange={e => {
                   this.setState({ tier: e.target.value })
@@ -119,6 +110,7 @@ class StatForm extends React.Component {
               <select
                 name="enchant"
                 placeholder="none"
+                className="browser-default"
                 value={this.state.enchant}
                 onChange={e => {
                   this.setState({ enchant: e.target.value })

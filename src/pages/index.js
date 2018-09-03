@@ -10,8 +10,10 @@ import Stats from 'src/components/stats/Stats'
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
-
-    const storedActions = JSON.parse(localStorage.getItem('actions'))
+    let storedActions
+    if (typeof window !== 'undefined') {
+      storedActions = JSON.parse(localStorage.getItem('actions'))
+    }
 
     this.state = {
       timer: {
@@ -22,6 +24,7 @@ class IndexPage extends React.Component {
       actions: storedActions || [],
       combatFame: 0,
       gatherFame: 0,
+      lastAction: null,
     }
 
     this.timer = null
@@ -121,17 +124,20 @@ class IndexPage extends React.Component {
     )
   }
 
-  addFame(type, fame) {
+  addFame(action) {
+    const { fame, type } = action
     const { gatherFame, combatFame } = this.state
 
     if (type === 'combat') {
       const total = parseInt(combatFame) + parseInt(fame)
       this.setState({
         combatFame: total,
+        lastAction: action,
       })
     } else if (type === 'gather') {
       this.setState({
         gatherFame: parseInt(gatherFame) + parseInt(fame),
+        lastAction: action,
       })
     }
   }
@@ -192,7 +198,7 @@ class IndexPage extends React.Component {
           restartTimer={this.restartTimer}
           diff={this.state.timer.diff}
           isPaused={this.timer ? true : false}
-          actions={this.state.actions}
+          lastAction={this.state.lastAction}
         />
         <div className="index-page">
           <Stats

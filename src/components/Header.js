@@ -34,7 +34,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { diff, isPaused, actions } = this.props
+    const { diff, isPaused, lastAction } = this.props
     const time = getTime(diff)
 
     return (
@@ -45,7 +45,16 @@ class Header extends React.Component {
           </div>
           <div className="nav-content">
             <div className="timer">{time}</div>
-            <div className="last-action">{}</div>
+            {lastAction && (
+              <div
+                className={`last-action ${lastAction.type} t${
+                  lastAction.tier
+                } enchant${lastAction.enchant}`}
+              >
+                {lastAction.fame}
+              </div>
+            )}
+
             <div className="buttons">
               <button
                 aria-label="Restart"
@@ -88,7 +97,7 @@ class Header extends React.Component {
 }
 
 export const getTime = distance => {
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+  //const days = Math.floor(distance / (1000 * 60 * 60 * 24))
   const hours = Math.floor(
     (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   )

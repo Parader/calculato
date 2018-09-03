@@ -25,7 +25,7 @@ class StatButton extends React.Component {
                     }
                     deleting
                       ? deleteAction(action.id, deleteStatus)
-                      : addFame(type, action.fame)
+                      : addFame(action)
                   }}
                   className={`action t${action.tier} enchant${action.enchant} ${
                     deleting ? 'deleting' : ''

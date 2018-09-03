@@ -44,6 +44,74 @@ body {
     color: #444;
     max-width: 560px;
     margin: auto;
+    .last-action {
+      position: relative;
+      padding: 8px 8px 8px 28px;
+      font-size: 14px;
+      color: #86dd89;
+      border-left: 1px solid #333;
+      border-right: 1px solid #333;
+      opacity: 0.8;
+      &.t0 {
+        padding: 8px 16px;
+      }
+      &.t3,
+      &.t4,
+      &.t5,
+      &.t6,
+      &.t7,
+      &.t8 {
+        &:before {
+          content: '';
+          width: 14px;
+          height: 14px;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 5px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          background-position: center;
+          margin: auto;
+        }
+      }
+      &.t3:before {
+        background-image: url('../images/tier3.png');
+      }
+      &.t4:before {
+        background-image: url('../images/tier4.png');
+      }
+      &.t5:before {
+        background-image: url('../images/tier5.png');
+      }
+      &.t6:before {
+        background-image: url('../images/tier6.png');
+      }
+      &.t7:before {
+        background-image: url('../images/tier7.png');
+      }
+      &.t8:before {
+        background-image: url('../images/tier8.png');
+      }
+      &.enchant0:before {
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+          0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+          0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+      }
+      &.enchant1:before {
+        box-shadow: 0px 0px 6px 3px #86dd89, 0px 2px 5px 0px #86dd89,
+          0px 3px 6px -2px #86dd89;
+      }
+      &.enchant2:before {
+        box-shadow: 0px 0px 6px 3px #71bfc3, 0px 2px 5px 0px #71bfc3,
+          0px 3px 6px -2px #71bfc3;
+      }
+      &.enchant3:before {
+        box-shadow: 0px 0px 6px 3px #b489e9, 0px 2px 5px 0px #b489e9,
+          0px 3px 6px -2px #b489e9;
+      }
+    }
     .buttons {
       display: flex;
       align-items: center;
@@ -140,8 +208,26 @@ body {
             margin-bottom: 11px;
             .input-field {
               margin: 0;
+              width: 100%;
               .dropdown-content li > span {
                 color: #333;
+              }
+              select {
+                background: none;
+                color: #fff;
+                border: 0;
+                border-bottom: 2px solid #fefefe;
+                border-right: 1px solid #ccc;
+                width: 100%;
+                min-width: 95px;
+                border-radius: 0;
+                height: 44px;
+                option {
+                  color: #333;
+                }
+                &:focus {
+                  outline: none;
+                }
               }
               input {
                 color: #fff;
