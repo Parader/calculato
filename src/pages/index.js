@@ -10,6 +10,7 @@ import Stats from 'src/components/stats/Stats'
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
+
     let storedActions
     if (typeof window !== 'undefined') {
       storedActions = JSON.parse(localStorage.getItem('actions'))

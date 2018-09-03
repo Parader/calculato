@@ -36,7 +36,7 @@ class Stats extends React.Component {
             </div>
             <div className="column">
               <div className="row title">Combat</div>
-              <StatRow label="Hour average" value={getStat('combat', 'hour')} />
+              <StatRow label="Fame / hour" value={getStat('combat', 'hour')} />
               <StatRow label="Total" value={getStat('combat', 'total')} />
             </div>
             <div className="column">
